@@ -6,10 +6,9 @@ import (
 	"eslinda-j/customer"
 )
 
-// CustomerSignup handles creating a new customer account
 func CustomerSignup(w http.ResponseWriter, r *http.Request) {
 	name := r.FormValue("name")
-	phone := r.FormValue("phone")
+	email := r.FormValue("email")
 	password := r.FormValue("password")
 
 	hashedPassword, err := customer.HashPassword(password)
@@ -18,21 +17,20 @@ func CustomerSignup(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = customer.CreateCustomer(dbConn, name, phone, hashedPassword)
+	err = customer.CreateCustomer(dbConn, name, email, hashedPassword)
 	if err != nil {
-		http.Error(w, "Could not create account (phone may already be used)", http.StatusBadRequest)
+		http.Error(w, "Could not create account (email may already be used)", http.StatusBadRequest)
 		return
 	}
 
 	w.Write([]byte("Account created successfully"))
 }
 
-// CustomerLogin checks phone/password and starts a session if correct
 func CustomerLogin(w http.ResponseWriter, r *http.Request) {
-	phone := r.FormValue("phone")
+	email := r.FormValue("email")
 	password := r.FormValue("password")
 
-	id, _, storedHash, err := customer.GetCustomerByPhone(dbConn, phone)
+	id, _, storedHash, err := customer.GetCustomerByEmail(dbConn, email)
 	if err != nil {
 		http.Error(w, "Invalid login", http.StatusUnauthorized)
 		return

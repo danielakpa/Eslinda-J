@@ -51,3 +51,20 @@ button:hover {
   line-height: 60px;
   margin: 0 auto 10px;
 }
+
+.password-field {
+  position: relative;
+  max-width: 300px;
+}
+
+.password-field input {
+  width: 100%;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}

@@ -1,3 +1,14 @@
+// Toggles the password field between hidden and visible text
+document.getElementById("toggle-password").addEventListener("click", function () {
+  const passwordInput = document.getElementById("password");
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+  } else {
+    passwordInput.type = "password";
+    this.textContent = "👁";
+  }
+});
+
 document.getElementById("signup-form").addEventListener("submit", async function (e) {
   e.preventDefault();
 
