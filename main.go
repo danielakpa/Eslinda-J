@@ -26,6 +26,10 @@ func main() {
 	database := db.Connect(dbHost, dbPort, dbUser, dbPassword, dbName)
 	defer database.Close()
 
+	http.HandleFunc("/shop", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "static/pages/shop.html")
+	})
+
 	// Give the handlers package access to the database
 	handlers.SetDB(database)
 
@@ -34,6 +38,8 @@ func main() {
 
 	// New route: fetching all cakes
 	http.HandleFunc("/api/products", handlers.GetProducts)
+	http.HandleFunc("/admin/login", handlers.AdminLogin)
+	http.HandleFunc("/admin/products/add", handlers.AddProduct)
 
 	log.Println("Server running on http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))

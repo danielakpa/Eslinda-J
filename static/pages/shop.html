@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shop Cakes</title>
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/shop.css">
+</head>
+<body>
+
+  <!-- Top header bar, like FNP's -->
+ <header class="top-header">
+  <div class="logo">
+    <img src="/static/images/logo.png" alt="Eslinda-J Cakes & Decorations">
+  </div>
+  <input type="text" class="search-bar" placeholder="Search cakes...">
+  <div class="header-icons">🛒 Cart</div>
+</header>
+
+  <!-- Nav menu with cake categories -->
+  <nav class="category-nav">
+    <a href="#">Birthday</a>
+    <a href="#">Wedding</a>
+    <a href="#">Cupcakes</a>
+    <a href="#">Occasions</a>
+  </nav>
+
+  <div class="shop-layout">
+
+    <!-- Sidebar filters -->
+    <aside class="filters">
+      <h3>Filters</h3>
+
+      <h4>Category</h4>
+      <label><input type="checkbox"> Chocolate</label>
+      <label><input type="checkbox"> Vanilla</label>
+      <label><input type="checkbox"> Fruit</label>
+
+      <h4>Price</h4>
+      <input type="range" min="0" max="500">
+    </aside>
+
+    <!-- Cake cards get inserted here by JS -->
+    <main id="cake-grid" class="cake-grid"></main>
+
+  </div>
+
+  <script src="/static/js/renderProductCard.js"></script>
+  <script src="/static/js/loadProducts.js"></script>
+</body>
+</html>

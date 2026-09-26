@@ -47,3 +47,16 @@ CREATE TABLE class_interest (
     notes TEXT,
     created_at TIMESTAMP DEFAULT NOW()
 );
+
+-- Customer accounts (optional — guests won't have one)
+CREATE TABLE customers (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    phone TEXT UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL,
+    saved_address TEXT,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Link orders to a customer account (NULL = guest order)
+ALTER TABLE orders ADD COLUMN customer_id INTEGER REFERENCES customers(id);
