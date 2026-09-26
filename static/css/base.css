@@ -1,0 +1,53 @@
+/* Reset some default browser spacing so layouts are more predictable */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  color: #333;
+}
+
+/* Basic styling for form inputs used across login/signup pages */
+input {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #c2185b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #a01648;
+}
+
+/* Success message styling (used after login/signup) */
+.success-box {
+  text-align: center;
+  padding: 20px;
+}
+
+.checkmark {
+  background: #4CAF50;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 30px;
+  line-height: 60px;
+  margin: 0 auto 10px;
+}
